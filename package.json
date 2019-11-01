@@ -1,0 +1,26 @@
+{
+  "name": "fpm-plugin-influxdb",
+  "version": "0.0.1",
+  "description": "A Plugin Named [fpm-plugin-influxdb] For YF-FPM-SERVER~",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "npx nodemon dev/dev.js",
+    "test": "npx mocha test/*.test.js"
+  },
+  "author": "yfsoftcom",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "influx": "^5.5.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "fpmc-jssdk": "^1.0.7",
+    "mocha": "^6.1.1",
+    "nodemon": "^1.11.0",
+    "yf-fpm-server": "^2.6.1"
+  },
+  "engines": {
+    "node": ">=8.11.1"
+  }
+}

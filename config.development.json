@@ -1,0 +1,17 @@
+{
+    "influx": {
+        "database": "mydb",
+        "username": "",
+        "password": "",
+        "hosts": [
+          { "host": "localhost" , "port": 19786}
+        ],
+        "schema": [{
+          "measurement": "cpu_load_short",
+          "tags": ["host", "region"],
+          "fields": {
+            "value": 0
+          }
+        }]
+      }
+}
