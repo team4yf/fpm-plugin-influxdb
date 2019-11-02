@@ -1,8 +1,6 @@
 ## FPM-PLUGIN-influxdb
 用于influxdb的插件
 
-
-
 ### Install
 ```bash
 npm i fpm-plugin-influxdb -S
@@ -46,4 +44,8 @@ BOOLEAN = 3
 
 - subscribe
 
+Nothing
+
 - other
+
+Nothing

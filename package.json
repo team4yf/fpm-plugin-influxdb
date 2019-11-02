@@ -1,6 +1,6 @@
 {
   "name": "fpm-plugin-influxdb",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A Plugin Named [fpm-plugin-influxdb] For YF-FPM-SERVER~",
   "main": "src/index.js",
   "scripts": {
