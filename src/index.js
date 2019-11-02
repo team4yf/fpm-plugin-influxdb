@@ -35,11 +35,42 @@ module.exports = {
       query: _query,
       // 批量插入的接口
       create: async args => {
+        const {
+          measurement,
+          row,
+        } = args;
         try {
           assert(client, 'InfluxDB client not inited~');
           debug('create args: %O', args);
-          const data = await client.writePoints(args);
+          const points = ( () => {
+            if(_.isArray(row)){
+              // batch insert
+              return row;
+            }else{
+              return [ row ];
+            }
+          })();
+          const data = await client.writeMeasurement(measurement, points);
           debug('create data %O', data);
+          return { _id: -1, n: points.length };
+        } catch (error) {
+          fpm.logger.error(error);
+          return Promise.reject({
+            message: error.message,
+          })
+        }
+      },
+      clear: async args => {
+        debug('clear Args: %O', args);
+        const {
+          measurement,
+          condition,
+        } = args;
+        try {
+          const query = `delete from ${measurement} where ${ !_.isEmpty(condition) ? condition:'1=1' } `;
+          const data = await _query({ query });
+          debug('delete %O', data)
+          if(!data) return 0;
           return 1;
         } catch (error) {
           fpm.logger.error(error);
