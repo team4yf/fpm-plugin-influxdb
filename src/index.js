@@ -165,7 +165,7 @@ module.exports = {
         try {
           const query = `select count(*) from ${measurement} where ${ !_.isEmpty(condition) ? condition:'1=1' } `;
           const data = await _query({ query });
-          if(!data) return 0;
+          if(_.isEmpty(data)) return 0;
           return _.head(data).count_value;
         } catch (error) {
           fpm.logger.error(error);
