@@ -1,4 +1,4 @@
-const { init, Func } = require("fpmc-jssdk");
+const { init, Func, InfluxQuery } = require("fpmc-jssdk");
 const assert = require('assert');
 init({ appkey:'123123', masterKey:'123123', endpoint: 'http://localhost:9999/api' });
 
@@ -14,9 +14,9 @@ describe('Function', function(){
 
   it('Function query', async () => {
     try {
-      const data = await new Func('influx.query').invoke({
-        query: `select max(value), sum(value) from cpu_load_short where time > '2019-10-10T15:00:00Z' group by host`
-      })
+      const data = await new InfluxQuery('h2o_quality')
+        .page(2, 2)
+        .find();
       console.log(data)
       assert.strictEqual(data == undefined, false, 'should not be undefined');
     } catch (error) {

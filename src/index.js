@@ -118,11 +118,12 @@ module.exports = {
           condition,
           fields,
           limit = 0,
+          skip = 0,
           sort,
           groupBy,
         } = args;
         try {
-          const query = `select ${fields} from ${measurement} where ${ !_.isEmpty(condition) ? condition:'1=1' } ${ !!groupBy ? ('group by ' + groupBy) : ''} ${ !!sort ? ('order by ' + sort.replace('-', ' desc').replace('+', ' asc') ): ''} ${ parseInt(limit) > 0?('limit ' + limit):'' }  `;
+          const query = `select ${fields} from ${measurement} where ${ !_.isEmpty(condition) ? condition:'1=1' } ${ !!groupBy ? ('group by ' + groupBy) : ''} ${ !!sort ? ('order by ' + sort.replace('-', ' desc').replace('+', ' asc') ): ''} ${ parseInt(limit) > 0?('limit ' + limit):'' } ${ parseInt(skip) > 0?('offset ' + skip):'' } `;
           return await _query({ query });
         } catch (error) {
           fpm.logger.error(error);

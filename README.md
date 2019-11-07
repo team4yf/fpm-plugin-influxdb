@@ -48,4 +48,4 @@ Nothing
 
 - other
 
-Nothing
+Use the project [https://github.com/team4yf/middle-stage](https://github.com/team4yf/middle-stage) to run the influxdb server

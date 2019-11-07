@@ -1,17 +1,11 @@
 {
     "influx": {
-        "database": "mydb",
+        "database": "NOAA_water_database",
         "username": "",
         "password": "",
         "hosts": [
-          { "host": "localhost" , "port": 19786}
+          { "host": "localhost" , "port": 19786 }
         ],
-        "schema": [{
-          "measurement": "cpu_load_short",
-          "tags": ["host", "region"],
-          "fields": {
-            "value": 0
-          }
-        }]
+        "schema": []
       }
 }
